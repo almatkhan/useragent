@@ -438,7 +438,7 @@ func (p properties) existsAny(keys ...string) bool {
 
 func (p properties) findMacOSVersion() string {
 	for _, token := range p.list {
-		if strings.Contains(token.Key, "OS") {
+		if strings.Contains(token.Key, "OS") && !strings.Contains(token.Key, "CriOS") {
 			if ver := findVersion(token.Value); ver != "" {
 				return ver
 			} else if ver = findVersion(token.Key); ver != "" {
